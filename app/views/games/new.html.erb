@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Longest Word Game</title>
+</head>
+<body>
+
+<div class="container">
+  <h1>New game</h1>
+  <div class="row">
+    <ul class="list-group list-group-horizontal">
+    <% @letters.each do |letter| %>
+    <li class="list-group-item"> <%= letter %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <form action="/score" method="post">
+    <input type="text" name="answer" placeholder="type your word here">
+    <input type="submit" value="Check">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+  </form>
+</div>
+
+</body>
+
+</html>
+
